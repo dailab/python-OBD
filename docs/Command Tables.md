@@ -1,4 +1,6 @@
-# OBD-II adapter (ELM327 commands)
+# Commands
+
+## OBD-II adapter (ELM327 commands)
 
 |PID  | Name        | Description                             | Response Value        |
 |-----|-------------|-----------------------------------------|-----------------------|
@@ -7,7 +9,7 @@
 
 <br>
 
-# Mode 01
+## Mode 01
 
 |PID | Name                      | Description                             | Response Value        |
 |----|---------------------------|-----------------------------------------|-----------------------|
@@ -110,7 +112,7 @@
 
 <br>
 
-# Mode 02
+## Mode 02
 
 Mode 02 commands are the same as mode 01, but are metrics from when the last DTC occurred (the freeze frame). To access them by name, simple prepend `DTC_` to the Mode 01 command name.
 
@@ -124,7 +126,7 @@ obd.commands.DTC_RPM # the Mode 02 command
 
 <br>
 
-# Mode 03
+## Mode 03
 
 Mode 03 contains a single command `GET_DTC` which requests all diagnostic trouble codes from the vehicle. The response will contain the codes themselves, as well as a description (if python-OBD has one). See the [DTC Responses](Responses.md#diagnostic-trouble-codes-dtcs) section for more details.
 
@@ -135,7 +137,7 @@ Mode 03 contains a single command `GET_DTC` which requests all diagnostic troubl
 
 <br>
 
-# Mode 04
+## Mode 04
 
 |PID  | Name      | Description                             | Response Value        |
 |-----|-----------|-----------------------------------------|-----------------------|
@@ -143,7 +145,7 @@ Mode 03 contains a single command `GET_DTC` which requests all diagnostic troubl
 
 <br>
 
-# Mode 06
+## Mode 06
 
 <span style="color:red">*WARNING: mode 06 is experimental. While it passes software tests, it has not been tested on a real vehicle. Any debug output for this mode would be greatly appreciated.*</span>
 
@@ -252,12 +254,34 @@ Mode 06 commands are used to monitor various test results from the vehicle. All 
 
 <br>
 
-# Mode 07
+## Mode 07
 
 The return value will be encoded in the same structure as the Mode 03 `GET_DTC` command.
 
 |PID  | Name            | Description                                  | Response Value        |
 |-----|-----------------|----------------------------------------------|-----------------------|
 | N/A | GET_CURRENT_DTC | Get DTCs from the current/last driving cycle | [special](Responses.md#diagnostic-trouble-codes-dtcs) |
+
+<br>
+
+## Mode 09
+
+<span style="color:red">*WARNING: mode 09 is experimental. While it has been tested on a hardware simulator, only a subset of the supported
+commands have (00-06) been tested. Any debug output for this mode, especially for the untested PIDs, would be greatly appreciated.*</span>
+
+|PID | Name                         | Description                                        | Response Value        |
+|----|------------------------------|----------------------------------------------------|-----------------------|
+| 00 | PIDS_9A                      | Supported PIDs [01-20]                             | BitArray              |
+| 01 | VIN_MESSAGE_COUNT            | VIN Message Count                                  | Unit.count            |
+| 02 | VIN                          | Vehicle Identification Number                      | string                |
+| 03 | CALIBRATION_ID_MESSAGE_COUNT | Calibration ID message count for PID 04            | Unit.count            |
+| 04 | CALIBRATION_ID               | Calibration ID                                     | string                |
+| 05 | CVN_MESSAGE_COUNT            | CVN Message Count for PID 06                       | Unit.count            |
+| 06 | CVN                          | Calibration Verification Numbers                   | hex string            |
+| 07 | PERF_TRACKING_MESSAGE_COUNT  | Performance tracking message count                 | TODO                  |
+| 08 | PERF_TRACKING_SPARK          | In-use performance tracking (spark ignition)       | TODO                  |
+| 09 | ECU_NAME_MESSAGE_COUNT       | ECU Name Message Count for PID 0A                  | TODO                  |
+| 0a | ECU_NAME                     | ECU Name                                           | TODO                  |
+| 0b | PERF_TRACKING_COMPRESSION    | In-use performance tracking (compression ignition) | TODO                  |
 
 <br>

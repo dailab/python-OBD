@@ -8,7 +8,7 @@ with open("README.md", "r") as readme:
 
 setup(
     name="obd",
-    version="0.7.1",
+    version="0.7.2",
     description=("Serial module for handling live sensor data from a vehicle's OBD-II port over wifi suited for a Panda Adapater"),
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -30,5 +30,5 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
-    install_requires=["pyserial==3.*", "pint==0.7.*"],
+    install_requires=["pyserial==3.*", "pint==0.20.*"],
 )

@@ -1,3 +1,5 @@
+# Async Connections
+
 Since the standard `query()` function is blocking, it can be a hazard for UI event loops. To deal with this, python-OBD has an `Async` connection object that can be used in place of the standard `OBD` object. `Async` is a subclass of `OBD`, and therefore inherits all of the standard methods. However, `Async` adds a few in order to control a threaded update loop. This loop will keep the values of your commands up to date with the vehicle. This way, when the user `query`s the car, the latest response is returned immediately.
 
 The update loop is controlled by calling `start()` and `stop()`. To subscribe a command for updating, call `watch()` with your requested OBDCommand. Because the update loop is threaded, commands can only be `watch`ed while the loop is `stop`ed.
@@ -32,7 +34,7 @@ connection = obd.Async()
 
 # a callback that prints every new value to the console
 def new_rpm(r):
-    print r.value
+    print (r.value)
 
 connection.watch(obd.commands.RPM, callback=new_rpm)
 connection.start()

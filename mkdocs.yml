@@ -3,7 +3,7 @@ repo_url: https://github.com/brendan-w/python-OBD
 repo_name: GitHub
 extra_javascript:
 - assets/extra.js
-pages:
+nav:
 - 'Getting Started': 'index.md'
 - 'OBD Connections': 'Connections.md'
 - 'Command Lookup': 'Command Lookup.md'

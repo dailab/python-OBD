@@ -6,7 +6,7 @@ Python-OBD is a library for handling data from a car's [**O**n-**B**oard **D**ia
 
 <br>
 
-# Installation
+## Installation
 
 Install the latest release from pypi:
 
@@ -22,7 +22,7 @@ $ sudo apt-get install bluetooth bluez-utils blueman
 
 <br>
 
-# Basic Usage
+## Basic Usage
 
 ```python
 import obd
@@ -41,7 +41,7 @@ OBD connections operate in a request-reply fashion. To retrieve data from the ca
 
 <br>
 
-# Module Layout
+## Module Layout
 
 ```python
 import obd
@@ -59,7 +59,7 @@ obd.logger         # the OBD module's root logger (for debug)
 
 <br>
 
-# License
+## License
 
 GNU General Public License V2
 

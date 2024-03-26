@@ -1,4 +1,3 @@
-
 # Debug Output
 
 If python-OBD is not working properly, the first thing you should do is enable debug output. Add the following line before your connection code to print all of the debug information to your console:
@@ -52,7 +51,7 @@ Here are some common logs from python-OBD, and their meanings:
 
 ### Unresponsive ELM
 
-```
+```none
 [obd] ========================== python-OBD (v0.4.0) ==========================
 [obd] Explicit port defined
 [obd] Opening serial port '/dev/pts/2'
@@ -93,7 +92,7 @@ print ports                    # ['/dev/ttyUSB0', '/dev/ttyUSB1']
 
 ### Unresponsive Vehicle
 
-```
+```none
 [obd] ========================== python-OBD (v0.4.0) ==========================
 [obd] Explicit port defined
 [obd] Opening serial port '/dev/pts/2'

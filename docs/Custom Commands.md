@@ -1,3 +1,4 @@
+# Custom Commands
 
 If the command you need is not in python-OBDs tables, you can create a new `OBDCommand` object. The constructor accepts the following arguments (each will become a property).
 
@@ -13,8 +14,7 @@ If the command you need is not in python-OBDs tables, you can create a new `OBDC
 | header (optional)    | string   | If set, use a custom header instead of the default one (7E0)               |
 
 
-Example
--------
+## Example
 
 ```python
 from obd import OBDCommand, Unit
@@ -58,7 +58,7 @@ Here are some details on the less intuitive fields of an OBDCommand:
 
 ---
 
-### OBDCommand.decoder
+## OBDCommand.decoder
 
 The `decoder` argument is a function of following form.
 
@@ -83,7 +83,7 @@ def <name>(messages):
 
 ---
 
-### OBDCommand.ecu
+## OBDCommand.ecu
 
 The `ecu` argument is a constant used to filter incoming messages. Some commands may listen to multiple ECUs (such as DTC decoders), where others may only be concerned with the engine (such as RPM). Currently, python-OBD can only distinguish the engine, but this list may be expanded over time:
 
@@ -94,13 +94,13 @@ The `ecu` argument is a constant used to filter incoming messages. Some commands
 
 ---
 
-### OBDCommand.fast
+## OBDCommand.fast
 
 The optional `fast` argument tells python-OBD whether it is safe to append a `"01"` to the end of the command. This will instruct the adapter to return the first response it recieves, rather than waiting for more (and eventually reaching a timeout). This can speed up requests significantly, and is enabled for most of python-OBDs internal commands. However, for unusual commands, it is safest to leave this disabled.
 
 ---
 
-### OBDCommand.header
+## OBDCommand.header
 
 The optional `header` argument tells python-OBD to use a custom header when querying the command. If not set, python-OBD assumes that the default 7E0 header is needed for querying the command. The switch between default and custom header (and vice versa) is automatically done by python-OBD.
 

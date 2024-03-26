@@ -1,4 +1,6 @@
-`OBDCommand`s are objects used to query information from the vehicle. They contain all of the information neccessary to perform the query, and decode the cars response. Python-OBD has [built in tables](Command Tables.md) for the most common commands. They can be looked up by name, or by mode & PID.
+# Command Lookup
+
+`OBDCommand`s are objects used to query information from the vehicle. They contain all of the information necessary to perform the query and decode the car's response. Python-OBD has [built in tables](Command Tables.md) for the most common commands. They can be looked up by name or by mode & PID.
 
 ```python
 import obd

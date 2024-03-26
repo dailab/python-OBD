@@ -295,6 +295,14 @@ def test_dtc():
         ("B0003", ""),
     ]
 
+def test_vin_message_count():
+    assert d.count(m("0901")) == 0
+
+def test_vin():
+    assert d.encoded_string(17)(m("0201575030" + "5A5A5A39395A54" + "53333932313234")) == bytearray(b'WP0ZZZ99ZTS392124')
+
+def test_cvn():
+     assert d.cvn(m("6021791bc8216e0b")) == '791bc8216e'
 
 def test_monitor():
     # single test -----------------------------------------

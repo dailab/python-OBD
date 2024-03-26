@@ -53,7 +53,9 @@ class ELM327:
             ecus()
     """
 
+    # chevron (ELM prompt character)
     ELM_PROMPT = b'>'
+    # an 'OK' which indicates we are entering low power state
     ELM_LP_ACTIVE = b'OK'
 
     _SUPPORTED_PROTOCOLS = {
@@ -116,8 +118,8 @@ class ELM327:
         self.__protocol = UnknownProtocol([])
         self.__low_power = False
         self.timeout = timeout
-
-        # ------------- open port -------------
+        
+            # ------------- open port -------------
         try:
             self.__port = socket.socket()
             self.__port.connect((addr, port))
@@ -132,7 +134,6 @@ class ELM327:
         if start_low_power:
             self.__write(b" ")
             time.sleep(1)
-
 
         # ---------------------------- ATZ (reset) ----------------------------
         try:

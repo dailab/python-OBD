@@ -1,3 +1,5 @@
+# Responses
+
 The `query()` function returns `OBDResponse` objects. These objects have the following properties:
 
 | Property | Description                                                            |
@@ -11,7 +13,7 @@ The `query()` function returns `OBDResponse` objects. These objects have the fol
 
 ---
 
-### is_null()
+## is_null()
 
 Use this function to check if a response is empty. Python-OBD will emit empty responses when it is unable to retrieve data from the car.
 
@@ -25,7 +27,7 @@ if not r.is_null():
 ---
 
 
-# Pint Values
+## Pint Values
 
 The `value` property typically contains a [Pint](http://pint.readthedocs.io/en/latest/) `Quantity` object, but can also hold complex structures (depending on the request). Pint quantities combine a value and unit into a single class, and are used to represent physical values such as "4 seconds", and "88 mph". This allows for consistency when doing math and unit conversions. Pint maintains a registry of units, which is exposed in python-OBD as `obd.Unit`.
 
@@ -71,7 +73,7 @@ import obd
 
 ---
 
-# Status
+## Status
 
 The status command returns information about the Malfunction Indicator Light (check-engine light), the number of trouble codes being thrown, and the type of engine.
 
@@ -111,7 +113,7 @@ Here are all of the tests names that python-OBD reports:
 
 ---
 
-# Diagnostic Trouble Codes (DTCs)
+## Diagnostic Trouble Codes (DTCs)
 
 Each DTC is represented by a tuple containing the DTC code, and a description (if python-OBD has one). For commands that return multiple DTCs, a list is used.
 
@@ -129,7 +131,7 @@ response.value = ("P0104", "Mass or Volume Air Flow Circuit Intermittent")
 
 ---
 
-# Fuel Status
+## Fuel Status
 
 The fuel status is a tuple of two strings, telling the status of the first and second fuel systems. Most cars only have one system, so the second element will likely be an empty string. The possible fuel statuses are:
 
@@ -144,7 +146,7 @@ The fuel status is a tuple of two strings, telling the status of the first and s
 
 ---
 
-# Air Status
+## Air Status
 
 The air status will be one of these strings:
 
@@ -157,7 +159,7 @@ The air status will be one of these strings:
 
 ---
 
-# Oxygen Sensors Present
+## Oxygen Sensors Present
 
 Returns a 2D structure of tuples (representing bank and sensor number), that holds boolean values for sensor presence.
 
@@ -183,7 +185,7 @@ response.value[1][2] == True # Bank 1, Sensor 2 is present
 ```
 ---
 
-# Monitors (Mode 06 Responses)
+## Monitors (Mode 06 Responses)
 
 All mode 06 commands return `Monitor` objects holding various test results for the requested sensor. A single monitor response can hold multiple tests, in the form of `MonitorTest` objects. The OBD standard defines some tests, but vehicles can always implement custom tests beyond the standard. Here are the standard Test IDs (TIDs) that python-OBD will recognize:
 
